@@ -1,0 +1,244 @@
+у меня уже есть github pages workflow файл, в общем config.yml
+name: Deploy Main Site with Quartz
+
+on:
+
+  push:
+
+    branches:
+
+      - v4  # Assuming your main branch is "main"
+
+  workflow_dispatch:
+
+permissions:
+
+  contents: read
+
+  pages: write
+
+  id-token: write
+
+concurrency:
+
+  group: "pages"
+
+  cancel-in-progress: false
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-22.04
+
+    steps:
+
+      - uses: actions/checkout@v4
+
+        with:
+
+          fetch-depth: 0 # Fetch all history for git info
+
+          
+
+      - uses: actions/setup-node@v4
+
+        with:
+
+          node-version: 20
+
+          
+
+      # Build main site (if needed)
+
+      - name: Install Main Site Dependencies
+
+        run: |
+
+          # Uncomment if your main site needs npm dependencies
+
+          # npm ci
+
+          
+
+      # Build Quartz
+
+      - name: Install Quartz Dependencies
+
+        working-directory: ./quartz
+
+        run: npm ci
+
+        
+
+      - name: Install libvips for Sharp
+
+        run: sudo apt-get update && sudo apt-get install -y libvips-dev
+
+        
+
+      - name: Rebuild Sharp in Quartz directory
+
+        working-directory: ./quartz
+
+        run: npm rebuild sharp
+
+        
+
+      - name: Build Tina CMS & Quartz
+        working-directory: ./quartz
+        run: |
+          npx tinacms build
+          npx quartz build
+
+        
+
+      # Create merged site structure
+
+      - name: Copy Quartz to Main Site
+
+        run: |
+
+          # Create .nojekyll file to prevent Jekyll processing
+
+          touch .nojekyll
+
+          
+
+          # Create final site structure
+
+          mkdir -p _site
+
+          
+
+          # Copy main site files (if any)
+
+          # cp -r your-main-content/* _site/
+
+          
+
+          # Copy Quartz-built files to notes directory
+
+          mkdir -p _site/notes
+
+          cp -r quartz/public/* _site/notes/
+
+          
+
+          # Alternatively, copy to root (select one approach)
+
+          # cp -r quartz/public/* _site/
+
+          
+
+      - name: Upload artifact
+
+        uses: actions/upload-pages-artifact@v3
+
+        with:
+
+          path: ./
+
+  deploy:
+
+    needs: build
+
+    environment:
+
+      name: github-pages
+
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Deploy to GitHub Pages
+
+        id: deployment
+
+        uses: actions/deploy-pages@v4
+
+# name: Build and Deploy
+
+# on:
+
+#   push:
+
+#     branches: [ main ]
+
+#   workflow_dispatch:
+
+# jobs:
+
+#   build-and-deploy:
+
+#     runs-on: ubuntu-latest
+
+#     steps:
+
+#       - name: Checkout 🛎️
+
+#         uses: actions/checkout@v3
+
+#       - name: Setup Node.js
+
+#         uses: actions/setup-node@v3
+
+#         with:
+
+#           node-version: '18'
+
+          
+
+#       - name: Install and Build Main Site
+
+#         run: |
+
+#           # Если у вас есть сборка для основного сайта
+
+#           # npm install
+
+#           # npm run build
+
+#       - name: Create .nojekyll file
+
+#         run: |
+
+#           touch .nojekyll
+
+#           touch quartz/public/.nojekyll
+
+          
+
+#       - name: Install and Build Quartz
+
+#         run: |
+
+#           cd quartz
+
+#           npm install
+
+#           npx quartz build
+
+          
+
+#       - name: Copy Quartz to Notes Directory
+
+#         run: |
+
+#           mkdir -p notes
+
+#           cp -r quartz/content/
+
+          
+
+#       - name: Deploy to GitHub Pages
+
+#         uses: JamesIves/github-pages-deploy-action@v4
+
+#         with:
+
+#           folder: .   # Можно изменить если у вас есть output директория
+
+#           branch: gh-pages
