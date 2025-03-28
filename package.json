@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "dev": "tinacms dev -c \"quartz dev\"",
+    "build": "tinacms build && quartz build"
+  },
+  "dependencies": {
+    "tinacms": "^2.7.3"
+  },
+  "devDependencies": {
+    "@tinacms/cli": "^1.9.3",
+    "@types/node": "^22.13.14"
+  }
+}
