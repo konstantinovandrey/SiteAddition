@@ -106,6 +106,10 @@ jobs:
     
       # Исправьте секцию Tina CMS
       - name: Install and Build Tina CMS
+        env:
+          # Убедитесь, что имена совпадают с теми, что вы добавили в секреты
+          TINA_CLIENT_ID: ${{ secrets.TINA_CLIENT_ID }}
+          TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
         run: |
           # Устанавливаем зависимости Tina
           npm install tinacms @tinacms/cli
