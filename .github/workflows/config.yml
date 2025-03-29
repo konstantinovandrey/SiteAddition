@@ -87,7 +87,7 @@ jobs:
       - name: Build tina CMS & Quartz
         working-directory: ./quartz
         run: |
-          npx tinacms build --config ./tina/config.ts
+          npx tinacms build --rootPath ./tina
           npx quartz buildtz build
 
         
