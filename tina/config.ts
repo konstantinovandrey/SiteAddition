@@ -111,12 +111,14 @@ export default defineConfig({
     outputFolder: "admin", // Папка для админ-панели
     publicFolder: ".",
     // publicFolder: "../quartz/public", // Путь к публичной папке Quartz
+    basePath: "/admin", // Добавьте это!
   },
   
   media: {
     tina: {
       mediaRoot: "images",
       publicFolder: ".", // Путь к публичной папке Quartz
+      
     },
   },
   
