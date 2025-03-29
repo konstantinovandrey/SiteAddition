@@ -107,15 +107,11 @@ jobs:
           TINA_CLIENT_ID: ${{ secrets.TINA_CLIENT_ID }}
           TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
         run: |
-          # Устанавливаем зависимости Tina
-          npm install tinacms @tinacms/cli
-          
-          # Явно указываем путь к папке tina для сборки
-          npx tinacms build --rootPath ./tina
-          
-          # Копируем админку в директорию quartz
-          mkdir -p ./quartz/public/admin
-          cp -r ./tina/admin/* ./quartz/public/admin/
+          cd tina
+          npm install
+          npx tinacms build
+          mkdir -p ../quartz/public/admin
+          cp -r admin/* ../quartz/public/admin/
 
 
 
