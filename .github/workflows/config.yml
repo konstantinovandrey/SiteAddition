@@ -98,8 +98,30 @@ jobs:
       #   run: |
       #     npx tinacms build --rootPath ./tina
       #     npx quartz buildtz build
+      - name: Build Quartz
+        working-directory: ./quartz
+        run: |
+          npm ci
+          npx quartz build
+    
+      # Исправьте секцию Tina CMS
+      - name: Install and Build Tina CMS
+        run: |
+          # Убедитесь, что директория tina существует
+          mkdir -p tina
+          cd tina
+          # Инициализируем package.json если его нет
+          [ -f package.json ] || npm init -y
+          # Устанавливаем Tina CMS и необходимые зависимости
+          npm install tinacms @tinacms/cli
+          # Инициализируем Tina если это первый запуск
+          [ -f tina/config.js ] || npx tinacms init
+          # Сборка Tina CMS
+          npx tinacms build
+          # Копируем админку в директорию public
+          mkdir -p ../quartz/public/admin
+          cp -r admin/* ../quartz/public/admin/
 
-        
 
       # Create merged site structure
 
