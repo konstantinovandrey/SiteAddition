@@ -82,13 +82,22 @@ jobs:
 
         run: npm rebuild sharp
 
-        
-
-      - name: Build tina CMS & Quartz
-        working-directory: ./quartz
+      - name: Install and Build Tina CMS
+        working-directory: ./tina  # Указываем директорию где находится Tina
         run: |
-          npx tinacms build --rootPath ./tina
-          npx quartz buildtz build
+          npm ci
+          npx tinacms build
+          
+      # Сборка Quartz
+      - name: Install Quartz Dependencies
+        working-directory: ./quartz  # Переключаемся на директорию Quartz
+        run: npm ci
+
+      # - name: Build tina CMS & Quartz
+      #   working-directory: ./quartz
+      #   run: |
+      #     npx tinacms build --rootPath ./tina
+      #     npx quartz buildtz build
 
         
 
