@@ -85,7 +85,7 @@ jobs:
       - name: Install and Build Tina CMS
         working-directory: tina  # Указываем директорию где находится Tina
         run: |
-          npm ci
+          npm install
           npx tinacms build
           
       # Сборка Quartz
