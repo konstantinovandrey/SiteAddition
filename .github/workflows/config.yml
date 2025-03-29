@@ -47,6 +47,7 @@ jobs:
           node-version: 20
 
       - name: Install and Build Tina CMS
+        working-directory: ./tina
           # Убедитесь, что имена совпадают с теми, что вы добавили в секреты
         env:
           TINA_CLIENT_ID: ${{ secrets.TINA_CLIENT_ID }}
@@ -54,7 +55,7 @@ jobs:
 
 
         run: |
-          cd tina
+          # cd tina
           npm ci 
           # npm install
           npx tinacms build --local
