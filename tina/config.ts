@@ -104,8 +104,8 @@ import { defineConfig } from "tinacms";
 
 export default defineConfig({
   branch: "v4", // Используйте вашу основную ветку
-  clientId: process.env.TINA_CLIENT_ID, // Добавьте в GitHub Secrets
-  token: process.env.TINA_TOKEN, // Добавьте в GitHub Secrets
+  token:  process.env.TINA_TOKEN, // This should match the value in your .env file
+  clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID, // This should match the value in your .env file
   
   build: {
     outputFolder: "admin", // Папка для админ-панели
