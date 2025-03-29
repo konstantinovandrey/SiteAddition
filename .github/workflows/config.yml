@@ -47,10 +47,11 @@ jobs:
           node-version: 20
 
       - name: Install and Build Tina CMS
-        env:
           # Убедитесь, что имена совпадают с теми, что вы добавили в секреты
-          token: ${{ secrets.TINA_CLIENT_ID }}
-          clientId: ${{ secrets.TINA_TOKEN }}
+        env:
+          token: ${{ secrets.TINA_CLIENT_ID }}   # ПЕРЕПУТАНО!
+          clientId: ${{ secrets.TINA_TOKEN }}    # ПЕРЕПУТАНО!
+
         run: |
           cd tina
           npm ci 
