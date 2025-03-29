@@ -82,11 +82,7 @@ jobs:
 
         run: npm rebuild sharp
 
-      - name: Install and Build Tina CMS
-        working-directory: tina  # Указываем директорию где находится Tina
-        run: |
-          npm install
-          npx tinacms build
+
           
       # Сборка Quartz
       - name: Install Quartz Dependencies
