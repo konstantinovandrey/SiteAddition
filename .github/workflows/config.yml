@@ -94,11 +94,11 @@ jobs:
       #   run: |
       #     npx tinacms build --rootPath ./tina
       #     npx quartz buildtz build
-      - name: Build Quartz
-        working-directory: ./quartz
-        run: |
-          npm ci
-          npx quartz build
+      # - name: Build Quartz
+      #   working-directory: ./quartz
+      #   run: |
+      #     npm ci
+      #     npx quartz build
     
       # Исправьте секцию Tina CMS
       - name: Install and Build Tina CMS
