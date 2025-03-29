@@ -50,7 +50,7 @@ jobs:
         working-directory: ./tina
           # Убедитесь, что имена совпадают с теми, что вы добавили в секреты
         env:
-          TINA_CLIENT_ID: ${{ secrets.TINA_CLIENT_ID }}
+          NEXT_PUBLIC_TINA_CLIENT_ID: ${{ secrets.TINA_CLIENT_ID }}
           TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
 
 
