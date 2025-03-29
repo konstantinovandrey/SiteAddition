@@ -49,8 +49,9 @@ jobs:
       - name: Install and Build Tina CMS
           # Убедитесь, что имена совпадают с теми, что вы добавили в секреты
         env:
-          token: ${{ secrets.TINA_CLIENT_ID }}   # ПЕРЕПУТАНО!
-          clientId: ${{ secrets.TINA_TOKEN }}    # ПЕРЕПУТАНО!
+          TINA_CLIENT_ID: ${{ secrets.TINA_CLIENT_ID }}
+          TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
+
 
         run: |
           cd tina
