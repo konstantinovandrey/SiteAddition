@@ -46,7 +46,20 @@ jobs:
 
           node-version: 20
 
-          
+      - name: Install and Build Tina CMS
+        env:
+          # Убедитесь, что имена совпадают с теми, что вы добавили в секреты
+          token: ${{ secrets.TINA_CLIENT_ID }}
+          clientId: ${{ secrets.TINA_TOKEN }}
+        run: |
+          cd tina
+          npm ci 
+          # npm install
+          npx tinacms build
+          # mkdir -p ../quartz/public/admin
+          # cp -r admin/* ../quartz/public/admin/
+  
+      
 
       # Build main site (if needed)
 
@@ -101,19 +114,7 @@ jobs:
       #     npx quartz build
     
       # Исправьте секцию Tina CMS
-      - name: Install and Build Tina CMS
-        env:
-          # Убедитесь, что имена совпадают с теми, что вы добавили в секреты
-          TINA_CLIENT_ID: ${{ secrets.TINA_CLIENT_ID }}
-          TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
-        run: |
-          cd tina
-          npm install
-          npx tinacms build
-          mkdir -p ../quartz/public/admin
-          cp -r admin/* ../quartz/public/admin/
-
-
+     
 
       # Create merged site structure
 
