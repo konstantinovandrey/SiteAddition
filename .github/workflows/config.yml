@@ -56,8 +56,8 @@ jobs:
 
         run: |
           # cd tina
-          npm ci 
-          # npm install
+          # npm ci 
+          npm install
           npx tinacms build --local
           # mkdir -p ../quartz/public/admin
           # cp -r admin/* ../quartz/public/admin/
