@@ -115,47 +115,23 @@ jobs:
       #   run: |
       #     npm ci
       #     npx quartz build
-    
-      # Исправьте секцию Tina CMS
      
 
       # Create merged site structure
+      # - name: Copy Quartz to Main Site
+      #   run: |
+      #     # Create .nojekyll file to prevent Jekyll processing
+      #     touch .nojekyll
+      #     # Create final site structur
+      #     mkdir -p _site
 
-      - name: Copy Quartz to Main Site
+      #     # Copy main site files (if any)
+      #     # cp -r your-main-content/* _site/
 
-        run: |
+      #     # Copy Quartz-built files to notes directory
+      #     mkdir -p _site/notes
+      #     cp -r quartz/public/* _site/notes/
 
-          # Create .nojekyll file to prevent Jekyll processing
-
-          touch .nojekyll
-
-          
-
-          # Create final site structure
-
-          mkdir -p _site
-
-          
-
-          # Copy main site files (if any)
-
-          # cp -r your-main-content/* _site/
-
-          
-
-          # Copy Quartz-built files to notes directory
-
-          mkdir -p _site/notes
-
-          cp -r quartz/public/* _site/notes/
-
-          
-
-          # Alternatively, copy to root (select one approach)
-
-          # cp -r quartz/public/* _site/
-
-          
 
       - name: Upload artifact
 
