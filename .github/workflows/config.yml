@@ -83,7 +83,7 @@ jobs:
         run: npm rebuild sharp
 
       - name: Install and Build Tina CMS
-        working-directory: ./tina  # Указываем директорию где находится Tina
+        working-directory: tina  # Указываем директорию где находится Tina
         run: |
           npm ci
           npx tinacms build
