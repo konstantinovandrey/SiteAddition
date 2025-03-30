@@ -51,12 +51,12 @@ jobs:
       - name: Install libvips for Sharp
         run: sudo apt-get update && sudo apt-get install -y libvips-dev
 
-      - name: Build Quartz
-        working-directory: ./quartz
-        run: |
-          npm ci --legacy-peer-deps
-          npm rebuild sharp
-          npx quartz build
+      # - name: Build Quartz
+      #   working-directory: ./quartz
+      #   run: |
+      #     npm ci --legacy-peer-deps
+      #     npm rebuild sharp
+      #     npx quartz build
       - name: Install Firebase #Authentication for website
         run: npm install firebase
       # Build Quartz
