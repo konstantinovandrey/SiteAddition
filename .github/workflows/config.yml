@@ -67,7 +67,7 @@ jobs:
 
       - name: Disable Jekyll processing
         run: |
-          touch _site/.nojekyll
+          touch webapp/.nojekyll
       # Добавьте этот шаг в GitHub Actions, чтобы увидеть реальную структуру
       - name: Check Tina build structure
         run: |
@@ -96,14 +96,14 @@ jobs:
       #     # Create .nojekyll file to prevent Jekyll processing
       #     touch .nojekyll
       #     # Create final site structur
-      #     mkdir -p _site
+      #     mkdir -p webapp
 
       #     # Copy main site files (if any)
-      #     # cp -r your-main-content/* _site/
+      #     # cp -r your-main-content/* webapp/
 
       #     # Copy Quartz-built files to notes directory
-      #     mkdir -p _site/notes
-      #     cp -r quartz/public/* _site/notes/
+      #     mkdir -p webapp/notes
+      #     cp -r quartz/public/* webapp/notes/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
