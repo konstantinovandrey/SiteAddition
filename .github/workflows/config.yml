@@ -68,7 +68,9 @@ jobs:
       - name: Disable Jekyll processing
         run: |
           touch ./.nojekyll
-  
+       
+   #------------------------------------------------------#
+   # такие проблемы тут наворотил, жесть просто.#
      
       # Добавьте этот шаг в GitHub Actions, чтобы увидеть реальную структуру
       # - name: Check Tina build structure
