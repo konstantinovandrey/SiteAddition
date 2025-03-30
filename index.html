@@ -558,6 +558,8 @@
     </style>
 </head>
 <body>
+    <!-- В конце <body> -->
+
     <script language="Javascript">
         var builder = new Editor({ root: "/builderjs/dist/" });
         builder.init();
@@ -811,6 +813,13 @@
                 header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
             }
         });
+       // В конце body 
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
+    <script>
+      const firebaseConfig = { /* ваш конфиг */ };
+      const app = firebase.initializeApp(firebaseConfig);
     </script>
 </body>
 </html>
