@@ -41,7 +41,6 @@ jobs:
           NEXT_PUBLIC_TINA_CLIENT_ID: ${{ secrets.TINA_CLIENT_ID }}
           TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
         run: |
-          cd tina
           npm ci 
           npx tinacms build --local
           # mkdir -p ../quartz/public/admin
