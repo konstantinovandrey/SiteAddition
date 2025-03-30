@@ -94,12 +94,21 @@ jobs:
           if [ -f "tina/admin/vite.svg" ]; then
             cp tina/admin/vite.svg ./admin/
           fi
-      - name: Fix paths in admin HTML
+      - name: Fix paths in index.html
         run: |
-          # Найти и заменить все пути
-          sed -i 's|="/admin/assets/|="/webapp/tina/admin/assets/|g' admin/index.html
-          sed -i 's|="/vite.svg"|="/webapp/tina/admin/vite.svg"|g' admin/index.html
-            
+          # Ищем все index.html в директории admin
+          find . -name "index.html" | grep admin
+          
+          # Исправляем пути в найденном файле (предполагаем tina/admin/index.html)
+          sed -i 's|="/admin/assets/|="/webapp/tina/admin/assets/|g' tina/admin/index.html
+          sed -i 's|="/vite.svg"|="/webapp/tina/admin/vite.svg"|g' tina/admin/index.html
+          
+          # Добавляем base тег (альтернативный подход)
+          # sed -i 's|<head>|<head>\n  <base href="/webapp/tina/admin/">|g' tina/admin/index.html
+          
+          # Проверяем изменения
+          grep -A 3 assets tina/admin/index.html
+        
       # - name: Fix HTML paths in Tina admin
       #   run: |
       #     # Заменяем /admin на /webapp/admin
