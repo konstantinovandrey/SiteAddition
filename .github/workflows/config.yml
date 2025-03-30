@@ -64,14 +64,11 @@ jobs:
       #   working-directory: ./quartz
       #   run: npm ci
 
- 
 
       - name: Disable Jekyll processing
         run: |
           touch ./.nojekyll
-
-     
-          
+  
      
       # Добавьте этот шаг в GitHub Actions, чтобы увидеть реальную структуру
       - name: Check Tina build structure
