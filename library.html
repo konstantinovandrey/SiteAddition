@@ -1,0 +1,171 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  {{ partial "head.html" . }}
+  <style>
+    :root {
+      --color-read: #c8e6c9;
+      --color-reading: #fff3e0;
+      --color-toread: #ffcdd2;
+    }
+    
+    .books-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
+    }
+
+    .book-card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+      position: relative;
+    }
+
+    .book-cover {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 8px 8px 0 0;
+    }
+
+    .book-info {
+      padding: 1rem;
+    }
+
+    .shelf-tag {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+    }
+
+    .read { background: var(--color-read); }
+    .currently-reading { background: var(--color-reading); }
+    .want-to-read { background: var(--color-toread); }
+
+    .rating {
+      color: #ffd700;
+      margin: 0.5rem 0;
+    }
+
+    .filters {
+      padding: 2rem;
+      background: #f5f5f5;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+  {{ partial "header.html" . }}
+
+  <div class="filters">
+    <input type="text" id="search" placeholder="Поиск по книгам...">
+    <select id="shelf-filter">
+      <option value="all">Все полки</option>
+      <option value="read">Прочитано</option>
+      <option value="currently-reading">Читаю сейчас</option>
+      <option value="want-to-read">Хочу прочитать</option>
+    </select>
+    <select id="genre-filter">
+      <option value="all">Все жанры</option>
+      {{ range $genre := .Site.Taxonomies.genres }}
+        <option value="{{ $genre.Page.Title }}">{{ $genre.Page.Title }}</option>
+      {{ end }}
+    </select>
+  </div>
+
+  <div class="books-grid">
+    {{ range .Pages }}
+    <div class="book-card" 
+         data-shelf="{{ .Params.shelf }}"
+         data-genres="{{ delimit .Params.genres ',' }}">
+      <img src="{{ .Params.cover }}" alt="{{ .Title }}" class="book-cover">
+      <span class="shelf-tag {{ .Params.shelf }}">{{ .Params.shelf }}</span>
+      <div class="book-info">
+        <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+        <p class="author">{{ .Params.author }}</p>
+        <div class="rating">
+          {{ range seq .Params.rating }}★{{ end }}
+        </div>
+        <div class="meta">
+          <span>{{ .Params.pages }} стр.</span> |
+          <span>{{ dateFormat "02.01.2006" .Params.start_date }}</span>
+        </div>
+      </div>
+    </div>
+    {{ end }}
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const books = document.querySelectorAll('.book-card');
+      const searchInput = document.querySelector('#search');
+      const shelfFilter = document.querySelector('#shelf-filter');
+      const genreFilter = document.querySelector('#genre-filter');
+
+      function filterBooks() {
+        const searchTerm = searchInput.value.toLowerCase();
+        const shelf = shelfFilter.value;
+        const genre = genreFilter.value;
+
+        books.forEach(book => {
+          const title = book.querySelector('h3').textContent.toLowerCase();
+          const author = book.querySelector('.author').textContent.toLowerCase();
+          const bookShelf = book.dataset.shelf;
+          const genres = book.dataset.genres.split(',');
+
+          const matchesSearch = title.includes(searchTerm) || author.includes(searchTerm);
+          const matchesShelf = shelf === 'all' || bookShelf === shelf;
+          const matchesGenre = genre === 'all' || genres.includes(genre);
+
+          book.style.display = (matchesSearch && matchesShelf && matchesGenre) 
+            ? 'block' 
+            : 'none';
+        });
+      }
+
+      searchInput.addEventListener('input', filterBooks);
+      shelfFilter.addEventListener('change', filterBooks);
+      genreFilter.addEventListener('change', filterBooks);
+    });
+  </script>
+
+  {{ partial "footer.html" . }}
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Моя библиотека</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <header class="header">
+        <h1>📚 Моя библиотека</h1>
+        <div class="filters">
+            <input type="text" id="search" placeholder="Поиск по книгам...">
+            <select id="shelf-filter">
+                <option value="all">Все полки</option>
+                <option value="read">Прочитано</option>
+                <option value="reading">Читаю сейчас</option>
+                <option value="want">Хочу прочитать</option>
+            </select>
+        </div>
+    </header>
+
+    <div class="books-grid" id="books-container"></div>
+
+    <script src="assets/js/books.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
