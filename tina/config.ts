@@ -123,7 +123,7 @@ export default defineConfig({
   },
   
   schema: {
-      collections: [Page, Post, Author, Global],
+      collections: [Page, Library, Post, Author, Global],
     },
       //   // tina/config.ts
       // {

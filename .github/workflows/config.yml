@@ -64,7 +64,7 @@ jobs:
       - name: Build Quartz
         run: |
           cd quartz
-          npm install
+          npm ci
           npx quartz build
           
       - name: Disable Jekyll processing
