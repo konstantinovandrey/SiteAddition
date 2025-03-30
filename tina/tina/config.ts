@@ -169,6 +169,7 @@ export default defineConfig({
   build: {
     outputFolder: "admin", // Папка для админ-панели
     publicFolder: ".", // Путь к публичной папке Quartz
+    basePath: "webapp/",
   },
   
   media: {
