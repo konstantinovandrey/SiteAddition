@@ -71,31 +71,31 @@ jobs:
   
      
       # Добавьте этот шаг в GitHub Actions, чтобы увидеть реальную структуру
-      - name: Check Tina build structure
-        run: |
-          echo "Listing tina directory:"
-          ls -la tina/
-          echo "Listing admin directory:"
-          ls -la tina/admin/
-          echo "Checking if assets exists:"
-          ls -la tina/admin/assets/ || echo "Assets directory not found!"
+      # - name: Check Tina build structure
+      #   run: |
+      #     echo "Listing tina directory:"
+      #     ls -la tina/
+      #     echo "Listing admin directory:"
+      #     ls -la tina/admin/
+      #     echo "Checking if assets exists:"
+      #     ls -la tina/admin/assets/ || echo "Assets directory not found!"
       
         
-      - name: Copy Tina Admin with assets
-        run: |
-          # Создаем директорию для админки
-          mkdir -p ./admin
+      # - name: Copy Tina Admin with assets
+      #   run: |
+      #     # Создаем директорию для админки
+      #     mkdir -p ./admin
           
-          # Рекурсивно копируем всё содержимое с сохранением структуры
-          cp -r tina/admin/* ./admin/
+      #     # Рекурсивно копируем всё содержимое с сохранением структуры
+      #     cp -r tina/admin/* ./admin/
           
-          # Проверяем, что assets скопированы
-          ls -la ./admin/
-          ls -la ./admin/assets/ || echo "Assets not copied!"
-           # Копируем Vite SVG если существует
-          if [ -f "tina/admin/vite.svg" ]; then
-            cp tina/admin/vite.svg ./admin/
-          fi
+      #     # Проверяем, что assets скопированы
+      #     ls -la ./admin/
+      #     ls -la ./admin/assets/ || echo "Assets not copied!"
+      #      # Копируем Vite SVG если существует
+      #     if [ -f "tina/admin/vite.svg" ]; then
+      #       cp tina/admin/vite.svg ./admin/
+      #     fi
       - name: Fix paths in index.html
         run: |
           # Ищем все index.html в директории admin
