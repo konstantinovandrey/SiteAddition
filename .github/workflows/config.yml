@@ -47,11 +47,17 @@ jobs:
         run: |
           # Uncomment if your main site needs npm dependencies
           # npm ci
-
+          
+      # Сборка Quartz
+      - name: Build Quartz
+        run: |
+          cd quartz
+          npm ci
+          npx quartz build
       # Build Quartz
-      - name: Install Quartz Dependencies # Очень избыточная хрень
-        working-directory: ./quartz
-        run: npm ci
+      # - name: Install Quartz Dependencies # Очень избыточная хрень
+      #   working-directory: ./quartz
+      #   run: npm ci
 
       - name: Install libvips for Sharp
         run: sudo apt-get update && sudo apt-get install -y libvips-dev
@@ -60,16 +66,13 @@ jobs:
         working-directory: ./quartz
         run: npm rebuild sharp
 
-      # Сборка Quartz
-      - name: Build Quartz
-        run: |
-          cd quartz
-          npm ci
-          npx quartz build
-          
       - name: Disable Jekyll processing
         run: |
           touch ./.nojekyll
+
+     
+          
+     
       # Добавьте этот шаг в GitHub Actions, чтобы увидеть реальную структуру
       - name: Check Tina build structure
         run: |
