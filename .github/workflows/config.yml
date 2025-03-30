@@ -42,7 +42,6 @@ jobs:
           TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
         run: |
           npm ci --legacy-peer-deps
-          npm audit fix --force
           npx tinacms build --rootPath ./tina/content
           # mkdir -p ../quartz/public/admin
           # cp -r admin/* ../quartz/public/admin/
