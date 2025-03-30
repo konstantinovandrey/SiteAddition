@@ -127,7 +127,7 @@ export default defineConfig({
       {
         name: "notes",
         label: "Заметки",
-        path: "../quartz/content",
+        path: "public",
         format: "md",
         fields: [
           {
