@@ -34,17 +34,17 @@ jobs:
           npm rebuild sharp
           npx quartz build
 
-      - name: Install and Build Tina CMS
-        working-directory: ./tina
-          # Убедитесь, что имена совпадают с теми, что вы добавили в секреты
-        env:
-          NEXT_PUBLIC_TINA_CLIENT_ID: ${{ secrets.TINA_CLIENT_ID }}
-          TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
-        run: |
-          npm ci 
-          npx tinacms build 
-          # mkdir -p ../quartz/public/admin
-          # cp -r admin/* ../quartz/public/admin/
+      # - name: Install and Build Tina CMS - Пока отключу сборку tina cms
+      #   working-directory: ./tina
+      #     # Убедитесь, что имена совпадают с теми, что вы добавили в секреты
+      #   env:
+      #     NEXT_PUBLIC_TINA_CLIENT_ID: ${{ secrets.TINA_CLIENT_ID }}
+      #     TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
+      #   run: |
+      #     npm ci 
+      #     npx tinacms build 
+      #     # mkdir -p ../quartz/public/admin
+      #     # cp -r admin/* ../quartz/public/admin/
 
 
       # Build main site (if needed)
