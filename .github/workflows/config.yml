@@ -95,10 +95,10 @@ jobs:
             cp tina/admin/vite.svg ./admin/
           fi
           
-      - name: Fix HTML paths in Tina admin
-        run: |
-          # Заменяем /admin на /webapp/admin
-          sed -i 's|="/admin/|="/webapp/admin/|g' admin/index.html
+      # - name: Fix HTML paths in Tina admin
+      #   run: |
+      #     # Заменяем /admin на /webapp/admin
+      #     sed -i 's|="/admin/|="/webapp/admin/|g' admin/index.html
       # - name: Build tina CMS & Quartz
       #   working-directory: ./quartz
       #   run: |
