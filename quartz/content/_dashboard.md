@@ -1,5 +1,5 @@
 ---
-layout: "single-with-menu"
+layout: "single-with-menu.ts"
 cssclasses:
   - wide-table
   - wide-dataview
