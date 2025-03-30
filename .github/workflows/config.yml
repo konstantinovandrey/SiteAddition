@@ -42,7 +42,7 @@ jobs:
           TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
         run: |
           npm ci 
-          npx tinacms build --rootPath ./tina/content
+          npx tinacms build 
           # mkdir -p ../quartz/public/admin
           # cp -r admin/* ../quartz/public/admin/
 
