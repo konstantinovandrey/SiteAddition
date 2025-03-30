@@ -105,6 +105,19 @@ jobs:
         working-directory: ./quartz  # Переключаемся на директорию Quartz
         run: npm ci
 
+      - name: Disable Jekyll processing
+        run: |
+          touch _site/.nojekyll
+      # Добавьте этот шаг в GitHub Actions, чтобы увидеть реальную структуру
+      - name: Check Tina build structure
+        run: |
+          echo "Listing tina directory:"
+          ls -la tina/
+          echo "Listing admin directory:"
+          ls -la tina/admin/
+          echo "Checking if assets exists:"
+          ls -la tina/admin/assets/ || echo "Assets directory not found!"
+
       # - name: Build tina CMS & Quartz
       #   working-directory: ./quartz
       #   run: |
@@ -132,83 +145,48 @@ jobs:
       #     mkdir -p _site/notes
       #     cp -r quartz/public/* _site/notes/
 
-
       - name: Upload artifact
-
         uses: actions/upload-pages-artifact@v3
-
         with:
-
           path: ./
 
   deploy:
-
     needs: build
-
     environment:
-
       name: github-pages
-
       url: ${{ steps.deployment.outputs.page_url }}
 
     runs-on: ubuntu-latest
-
     steps:
-
       - name: Deploy to GitHub Pages
-
         id: deployment
-
         uses: actions/deploy-pages@v4
 
 # name: Build and Deploy
-
 # on:
-
 #   push:
-
 #     branches: [ main ]
-
 #   workflow_dispatch:
-
 # jobs:
-
 #   build-and-deploy:
-
 #     runs-on: ubuntu-latest
-
 #     steps:
-
 #       - name: Checkout 🛎️
-
 #         uses: actions/checkout@v3
-
 #       - name: Setup Node.js
-
 #         uses: actions/setup-node@v3
-
 #         with:
-
 #           node-version: '18'
-
-          
+   
 
 #       - name: Install and Build Main Site
-
 #         run: |
-
 #           # Если у вас есть сборка для основного сайта
-
 #           # npm install
-
 #           # npm run build
-
 #       - name: Create .nojekyll file
-
 #         run: |
-
 #           touch .nojekyll
-
 #           touch quartz/public/.nojekyll
 
           
