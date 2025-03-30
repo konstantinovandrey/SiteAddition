@@ -94,7 +94,12 @@ jobs:
           if [ -f "tina/admin/vite.svg" ]; then
             cp tina/admin/vite.svg ./admin/
           fi
-          
+      - name: Fix paths in admin HTML
+      run: |
+        # Найти и заменить все пути
+        sed -i 's|="/admin/assets/|="/webapp/tina/admin/assets/|g' тут/путь/к/index.html
+        sed -i 's|="/vite.svg"|="/webapp/tina/admin/vite.svg"|g' тут/путь/к/index.html
+            
       # - name: Fix HTML paths in Tina admin
       #   run: |
       #     # Заменяем /admin на /webapp/admin
