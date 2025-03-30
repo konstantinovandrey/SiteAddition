@@ -112,7 +112,7 @@ export default defineConfig({
     publicFolder: ".",
     // publicFolder: "../quartz/public", // Путь к публичной папке Quartz
     // basePath: "/webapp/admin", // Добавьте это!
-    basePath: "/webapp", // понял зачем это нужно  // Указываем префикс для всех путей
+    basePath: "/", // понял зачем это нужно  // Указываем префикс для всех путей
   },
   
   media: {
