@@ -1,49 +1,30 @@
 name: Deploy Main Site with Quartz
-
 on:
-
   push:
-
     branches:
-
       - v4  # Assuming your main branch is "main"
 
   workflow_dispatch:
 
 permissions:
-
   contents: read
-
   pages: write
-
   id-token: write
 
 concurrency:
-
   group: "pages"
-
   cancel-in-progress: false
 
 jobs:
-
   build:
-
     runs-on: ubuntu-22.04
-
     steps:
-
       - uses: actions/checkout@v4
-
         with:
-
           fetch-depth: 0 # Fetch all history for git info
 
-          
-
       - uses: actions/setup-node@v4
-
         with:
-
           node-version: 20
 
       - name: Install and Build Tina CMS
@@ -52,8 +33,6 @@ jobs:
         env:
           NEXT_PUBLIC_TINA_CLIENT_ID: ${{ secrets.TINA_CLIENT_ID }}
           TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
-
-
         run: |
           # cd tina
           # npm ci 
@@ -61,45 +40,26 @@ jobs:
           npx tinacms build --local
           # mkdir -p ../quartz/public/admin
           # cp -r admin/* ../quartz/public/admin/
-  
-      
+
 
       # Build main site (if needed)
-
       - name: Install Main Site Dependencies
-
         run: |
-
           # Uncomment if your main site needs npm dependencies
-
           # npm ci
 
-          
-
       # Build Quartz
-
       - name: Install Quartz Dependencies
-
         working-directory: ./quartz
-
         run: npm ci
 
-        
-
       - name: Install libvips for Sharp
-
         run: sudo apt-get update && sudo apt-get install -y libvips-dev
 
-        
-
       - name: Rebuild Sharp in Quartz directory
-
         working-directory: ./quartz
-
         run: npm rebuild sharp
 
-
-          
       # Сборка Quartz
       - name: Install Quartz Dependencies
         working-directory: ./quartz  # Переключаемся на директорию Quartz
