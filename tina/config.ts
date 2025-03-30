@@ -123,28 +123,65 @@ export default defineConfig({
   },
   
   schema: {
-    collections: [
-      {
-        name: "notes",
-        label: "Заметки",
-        path: "public",
-        format: "md",
-        fields: [
-          {
-            type: "string",
-            name: "title",
-            label: "Заголовок",
-            isTitle: true,
-            required: true,
-          },
-          {
-            type: "rich-text",
-            name: "body",
-            label: "Содержание",
-            isBody: true,
-          },
-        ],
-      },
-    ],
-  },
+      collections: [Page, Post, Author, Global],
+    },
+      //   // tina/config.ts
+      // {
+      //   name: "notes",
+      //   label: "Заметки",
+      //   path: "content/notes",
+      //   fields: [
+      //     {
+      //       type: "string",
+      //       name: "layout",
+      //       label: "Макет",
+      //       options: ["work", "personal", "project"], // Типы макетов
+      //       required: true
+      //     },
+      //     {
+      //       type: "object",
+      //       name: "work_fields",
+      //       label: "Поля для работы",
+      //       fields: [
+      //         { type: "image", name: "scheme", label: "Схема" }
+      //       ],
+      //       ui: {
+      //         condition: (values) => values?.layout === "work"
+      //       }
+      //     },
+      //     {
+      //       type: "object",
+      //       name: "personal_fields",
+      //       label: "Личные данные",
+      //       fields: [
+      //         { type: "datetime", name: "event_date", label: "Дата события" }
+      //       ],
+      //       ui: {
+      //         condition: (values) => values?.layout === "personal"
+      //       }
+      //     }
+      //   ]
+      // }
+//         name: "notes",
+//         label: "Заметки",
+//         path: "public",
+//         format: "md",
+//         fields: [
+//           {
+//             type: "string",
+//             name: "title",
+//             label: "Заголовок",
+//             isTitle: true,
+//             required: true,
+//           },
+//           {
+//             type: "rich-text",
+//             name: "body",
+//             label: "Содержание",
+//             isBody: true,
+//           },
+//         ],
+//       },
+//     ],
+//   },
 });
