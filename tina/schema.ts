@@ -2,7 +2,7 @@
 import { CustomCalendar } from "../components/calendar";
 
 export const quoteBlockSchema = {
-  name: "quote", // уникальный идентификатор
+  name: "calendar", // уникальный идентификатор
   label: "Цитата", // название в интерфейсе Tina
   component: CustomCalendar, // ваш компонент
   fields: [ // поля для редактирования
