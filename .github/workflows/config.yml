@@ -77,7 +77,17 @@ jobs:
           ls -la tina/admin/
           echo "Checking if assets exists:"
           ls -la tina/admin/assets/ || echo "Assets directory not found!"
-
+      - name: Copy Tina Admin with assets
+        run: |
+          # Создаем директорию для админки
+          mkdir -p ./admin
+          
+          # Рекурсивно копируем всё содержимое с сохранением структуры
+          cp -r tina/admin/* ./admin/
+          
+          # Проверяем, что assets скопированы
+          ls -la ./admin/
+          ls -la ./admin/assets/ || echo "Assets not copied!"
       # - name: Build tina CMS & Quartz
       #   working-directory: ./quartz
       #   run: |
