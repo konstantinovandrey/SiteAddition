@@ -92,11 +92,4 @@ const config: QuartzConfig = {
   },
 }
 
-export default config (
-  <PageLayout>
-    <Header />  <!-- Ваш кастомный хедер -->
-    <Body>
-      {/* Остальной контент */}
-    </Body>
-  </PageLayout>
-)
+export default config
