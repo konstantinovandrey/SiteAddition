@@ -34,17 +34,18 @@ jobs:
           npm rebuild sharp
           npx quartz build
 
-      # - name: Install and Build Tina CMS - Пока отключу сборку tina cms
-      #   working-directory: ./tina
-      #     # Убедитесь, что имена совпадают с теми, что вы добавили в секреты
-      #   env:
-      #     NEXT_PUBLIC_TINA_CLIENT_ID: ${{ secrets.TINA_CLIENT_ID }}
-      #     TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
-      #   run: |
-      #     npm ci 
-      #     npx tinacms build 
-      #     # mkdir -p ../quartz/public/admin
-      #     # cp -r admin/* ../quartz/public/admin/
+      # Не понимаю как оно собирается, вроде и компилируется, но немного не понимаю.
+      - name: Install and Build Tina CMS - Пока отключу сборку tina cms
+        working-directory: ./tina
+          # Убедитесь, что имена совпадают с теми, что вы добавили в секреты
+        env:
+          NEXT_PUBLIC_TINA_CLIENT_ID: ${{ secrets.TINA_CLIENT_ID }}
+          TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
+        run: |
+          npm ci 
+          npx tinacms build 
+          # mkdir -p ../quartz/public/admin
+          # cp -r admin/* ../quartz/public/admin/
 
 
       # Build main site (if needed)
@@ -191,64 +192,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
-# name: Build and Deploy
-# on:
-#   push:
-#     branches: [ main ]
-#   workflow_dispatch:
-# jobs:
-#   build-and-deploy:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Checkout 🛎️
-#         uses: actions/checkout@v3
-#       - name: Setup Node.js
-#         uses: actions/setup-node@v3
-#         with:
-#           node-version: '18'
-   
-
-#       - name: Install and Build Main Site
-#         run: |
-#           # Если у вас есть сборка для основного сайта
-#           # npm install
-#           # npm run build
-#       - name: Create .nojekyll file
-#         run: |
-#           touch .nojekyll
-#           touch quartz/public/.nojekyll
-
-          
-
-#       - name: Install and Build Quartz
-
-#         run: |
-
-#           cd quartz
-
-#           npm install
-
-#           npx quartz build
-
-          
-
-#       - name: Copy Quartz to Notes Directory
-
-#         run: |
-
-#           mkdir -p notes
-
-#           cp -r quartz/content/
-
-          
-
-#       - name: Deploy to GitHub Pages
-
-#         uses: JamesIves/github-pages-deploy-action@v4
-
-#         with:
-
-#           folder: .   # Можно изменить если у вас есть output директория
-
-#           branch: gh-pages
