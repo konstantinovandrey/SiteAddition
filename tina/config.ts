@@ -125,7 +125,11 @@ export default defineConfig({
   schema: {
       collections: [Page, Library, Post, Author, Global],
     },
-      //   // tina/config.ts
+});
+
+
+
+  //   // tina/config.ts
       // {
       //   name: "notes",
       //   label: "Заметки",
@@ -184,4 +188,3 @@ export default defineConfig({
 //       },
 //     ],
 //   },
-});

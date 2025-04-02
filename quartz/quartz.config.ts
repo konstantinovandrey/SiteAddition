@@ -8,7 +8,7 @@ import * as Plugin from "./quartz/plugins"
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "Мои заметки",
+    pageTitle: "База знаний",
     pageTitleSuffix: " | База знаний",
     enableSPA: true,
     enablePopovers: true,
@@ -92,4 +92,11 @@ const config: QuartzConfig = {
   },
 }
 
-export default config
+export default config (
+  <PageLayout>
+    <Header />  <!-- Ваш кастомный хедер -->
+    <Body>
+      {/* Остальной контент */}
+    </Body>
+  </PageLayout>
+)
