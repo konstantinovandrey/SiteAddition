@@ -35,9 +35,8 @@ jobs:
           npx quartz build
 
       # Не понимаю как оно собирается, вроде и компилируется, но немного не понимаю.
-      - name: Install and Build Tina CMS - Пока отключу сборку tina cms
-        working-directory: ./tina
-          # Убедитесь, что имена совпадают с теми, что вы добавили в секреты
+      - name: Install and Build Tina CMS 
+      
         env:
           NEXT_PUBLIC_TINA_CLIENT_ID: ${{ secrets.TINA_CLIENT_ID }}
           TINA_TOKEN: ${{ secrets.TINA_TOKEN }}
@@ -46,7 +45,7 @@ jobs:
           npx tinacms build 
           # mkdir -p ../quartz/public/admin
           # cp -r admin/* ../quartz/public/admin/
-          
+
 
       - name: Install libvips for Sharp
         run: sudo apt-get update && sudo apt-get install -y libvips-dev
