@@ -3,6 +3,7 @@ import { QuartzComponent } from "./components/types"
 import { ValidLocale } from "./i18n"
 import { PluginTypes } from "./plugins/types"
 import { Theme } from "./util/theme"
+import CustomComponent from "./components/CustomComponent"
 
 export type Analytics =
   | null
@@ -81,7 +82,7 @@ export interface FullPageLayout {
   head: QuartzComponent
   header: QuartzComponent[]
   beforeBody: QuartzComponent[]
-  pageBody: QuartzComponent
+  pageBody: CustomComponent
   afterBody: QuartzComponent[]
   left: QuartzComponent[]
   right: QuartzComponent[]
