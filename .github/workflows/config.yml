@@ -46,13 +46,7 @@ jobs:
           npx tinacms build 
           # mkdir -p ../quartz/public/admin
           # cp -r admin/* ../quartz/public/admin/
-
-
-      # Build main site (if needed)
-      - name: Install Main Site Dependencies
-        run: |
-          # Uncomment if your main site needs npm dependencies
-          # npm ci
+          
 
       - name: Install libvips for Sharp
         run: sudo apt-get update && sudo apt-get install -y libvips-dev
