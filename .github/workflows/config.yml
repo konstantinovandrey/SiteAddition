@@ -30,7 +30,7 @@ jobs:
       - name: Build Quartz
         working-directory: ./quartz
         run: |
-          npm ci --legacy-peer-deps
+          npm ci 
           npm rebuild sharp
           npx quartz build
 
