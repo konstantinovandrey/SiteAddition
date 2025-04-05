@@ -1,7 +1,7 @@
 // collections/books.ts
 import type { Collection } from "tinacms";
-import { iconSchema } from "../fields/icon";
-import { ColorPickerInput } from "../fields/color";
+// import { iconSchema } from "../blocks/icon";
+// import { ColorPickerInput } from "../blocks/color";
 
 export const BooksCollection: Collection = {
   label: "Книги",

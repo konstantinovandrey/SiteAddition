@@ -1,6 +1,6 @@
 import type { Collection } from "tinacms";
-import { ColorPickerInput } from "../fields/color";
-import { iconSchema } from "../fields/icon";
+// import { ColorPickerInput } from "../blocks/color";
+// import { iconSchema } from "../blocks/icon";
 
 const Global: Collection = {
   label: "Global",
