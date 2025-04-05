@@ -101,8 +101,10 @@
 //   },
 // });
 import { defineConfig } from "tinacms";
+// import { collections } from "./schemas";
+// import { schema } from "./schemas";
 // import { Page } from "./collections/page";
-import { Library } from "./collections/library";
+// import { Library } from "./collections/library";
 
 export default defineConfig({
   branch: "v4", // Используйте вашу основную ветку
@@ -124,10 +126,7 @@ export default defineConfig({
     },
   },
   
-  schema: {
-      collections: [Library],
-      // collections: [Page, Library, Post, Author, Global],
-    },
+  schema: schema
 });
 
 
