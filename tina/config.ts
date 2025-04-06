@@ -101,33 +101,89 @@
 //   },
 // });
 import { defineConfig } from "tinacms";
-// import { collections } from "./schemas";
-import schema from "./collections/schema"; // без фигурных скобок, 
-// так как импорт именнованный
-// import { Page } from "./collections/page";
-// import { Library } from "./collections/library";
 
 export default defineConfig({
   branch: "v4", // Используйте вашу основную ветку
-  token:  process.env.TINA_TOKEN, // This should match the value in your .env file
-  clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID, // This should match the value in your .env file
-  
+  token: process.env.TINA_TOKEN, // Значение должно совпадать с .env
+  clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID, // Значение должно совпадать с .env
+
   build: {
     outputFolder: "admin", // Папка для админ-панели
-    publicFolder: ".",
-    // publicFolder: "../quartz/public", // Путь к публичной папке Quartz
-    // basePath: "/webapp/admin", // Добавьте это!
-    basePath: "/", // понял зачем это нужно  // Указываем префикс для всех путей
+    publicFolder: "../quartz/public", // Путь к публичной папке Quartz
+    basePath: "/", // Префикс для всех путей
   },
-  
+
   media: {
     tina: {
-      mediaRoot: "images",
-      publicFolder: "public", // Путь к публичной папке Quartz
+      mediaRoot: "images", // Папка, где хранятся медиафайлы
+      publicFolder: "../quartz/public", // Путь к публичной папке Quartz
     },
   },
-  
-  schema: schema,
+
+  schema: {
+    collections: [
+      {
+        name: "notes",
+        label: "Заметки",
+        path: "../quartz/content/notes", // Путь к файлам коллекции заметок
+        format: "md",
+        fields: [
+          {
+            type: "string",
+            name: "title",
+            label: "Заголовок",
+            isTitle: true,
+            required: true, // Обязательное поле для isTitle
+          },
+          {
+            type: "rich-text",
+            name: "body",
+            label: "Содержание",
+            isBody: true,
+          },
+          {
+            name: "exerciseType",
+            label: "Exercise Type",
+            type: "object",
+            fields: [
+              {
+                name: "exercises",
+                label: "Exercises",
+                type: "string",
+                ui: {
+                  component: "textarea",
+                },
+              },
+            ],
+          },
+        ],
+      },
+      {
+        name: "post",
+        label: "Posts",
+        path: "content/posts", // Путь к файлам коллекции постов
+        fields: [
+          {
+            type: "string",
+            name: "title",
+            label: "Title",
+            isTitle: true,
+            required: true,
+          },
+          {
+            type: "rich-text",
+            name: "body",
+            label: "Body",
+            isBody: true,
+          },
+        ],
+        ui: {
+          // DEMO-маршрутизатор для показа страницы поста
+          router: ({ document }) => `/demo/blog/${document._sys.filename}`,
+        },
+      },
+    ],
+  },
 });
 
 

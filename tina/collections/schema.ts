@@ -11,7 +11,7 @@ const schema = {
                     label: 'Title',
                     type: 'string',
                     isTitle: true,
-                    required: true, // Добавлено required для поля isTitle
+                    required: true, 
                 },
                 {
                     name: 'description',
@@ -21,7 +21,7 @@ const schema = {
                 {
                     name: 'exerciseType',
                     label: 'ExerciseType',
-                    type: 'object', // Добавлен тип object для вложенных полей
+                    type: 'object', 
                     fields: [
                         {
                             name: 'exercises',
