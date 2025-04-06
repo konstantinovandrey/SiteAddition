@@ -173,21 +173,4 @@
 // export default Global;
 
 // Глобальные конфигурации сайта
-globals: [
-  {
-    name: "siteConfig",
-    label: "Настройки сайта",
-    path: "content/settings/site.json",
-    fields: [
-      { name: "title", label: "Название сайта", type: "string" },
-      { name: "description", label: "Описание", type: "string" },
-      { name: "logo", label: "Логотип", type: "image" }
-    ]
-  },
-  {
-    name: "navigation",
-    label: "Навигационное меню",
-    path: "content/settings/menu.json",
-    fields: [...]
-  }
-]
+
