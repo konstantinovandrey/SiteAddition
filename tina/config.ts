@@ -102,7 +102,7 @@
 // });
 import { defineConfig } from "tinacms";
 // import { collections } from "./schemas";
-// import { schema } from "./schemas";
+import { schema } from "./collections";
 // import { Page } from "./collections/page";
 // import { Library } from "./collections/library";
 
@@ -126,7 +126,7 @@ export default defineConfig({
     },
   },
   
-  schema: schema
+  schema: Schema,
 });
 
 
