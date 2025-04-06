@@ -100,94 +100,6 @@
 //     ],
 //   },
 // });
-import { defineConfig } from "tinacms";
-
-// Возникают проблемы с действиями ключей. Ошибка ли это с 
-// ключами, или конфиг плохо читается.
-export default defineConfig({
-  branch: "v4", // Используйте вашу основную ветку
-  token: process.env.TINA_TOKEN, // Значение должно совпадать с .env
-  clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID, // Значение должно совпадать с .env
-
-  build: {
-    outputFolder: "admin", // Папка для админ-панели
-    publicFolder: "../quartz/public", // Путь к публичной папке Quartz
-    basePath: "/", // Префикс для всех путей
-  },
-
-  media: {
-    tina: {
-      mediaRoot: "images", // Папка, где хранятся медиафайлы
-      publicFolder: "../quartz/public", // Путь к публичной папке Quartz
-    },
-  },
-
-  schema: {
-    collections: [
-      {
-        name: "notes",
-        label: "Заметки",
-        path: "../quartz/content/notes", // Путь к файлам коллекции заметок
-        format: "md",
-        fields: [
-          {
-            type: "string",
-            name: "title",
-            label: "Заголовок",
-            isTitle: true,
-            required: true, // Обязательное поле для isTitle
-          },
-          {
-            type: "rich-text",
-            name: "body",
-            label: "Содержание",
-            isBody: true,
-          },
-          {
-            name: "exerciseType",
-            label: "Exercise Type",
-            type: "object",
-            fields: [
-              {
-                name: "exercises",
-                label: "Exercises",
-                type: "string",
-                ui: {
-                  component: "textarea",
-                },
-              },
-            ],
-          },
-        ],
-      },
-      {
-        name: "post",
-        label: "Posts",
-        path: "content/posts", // Путь к файлам коллекции постов
-        fields: [
-          {
-            type: "string",
-            name: "title",
-            label: "Title",
-            isTitle: true,
-            required: true,
-          },
-          {
-            type: "rich-text",
-            name: "body",
-            label: "Body",
-            isBody: true,
-          },
-        ],
-        ui: {
-          // DEMO-маршрутизатор для показа страницы поста
-          router: ({ document }) => `/demo/blog/${document._sys.filename}`,
-        },
-      },
-    ],
-  },
-});
-
 
 
   //   // tina/config.ts
@@ -249,3 +161,53 @@ export default defineConfig({
 //       },
 //     ],
 //   },
+
+
+import { defineConfig } from "tinacms";
+
+// Возникают проблемы с действиями ключей. Ошибка ли это с 
+// ключами, или конфиг плохо читается.
+export default defineConfig({
+  branch: "v4", // Используйте вашу основную ветку
+  token: process.env.TINA_TOKEN, // Значение должно совпадать с .env
+  clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID, // Значение должно совпадать с .env
+
+  build: {
+    outputFolder: "admin", // Папка для админ-панели
+    publicFolder: "../quartz/public", // Путь к публичной папке Quartz
+    basePath: "/", // Префикс для всех путей
+  },
+
+  media: {
+    tina: {
+      mediaRoot: "images", // Папка, где хранятся медиафайлы
+      publicFolder: "../quartz/public", // Путь к публичной папке Quartz
+    },
+  },
+
+  schema: {
+    collections: [
+      {
+        name: "notes",
+        label: "Заметки",
+        path: "../quartz/content/notes", // Путь к файлам коллекции заметок
+        format: "md",
+        fields: [
+          {
+            type: "string",
+            name: "title",
+            label: "Заголовок",
+            isTitle: true,
+            required: true,
+          },
+          {
+            type: "rich-text",
+            name: "body",
+            label: "Содержание",
+            isBody: true,
+          },
+        ],
+      },
+    ],
+  },
+});
