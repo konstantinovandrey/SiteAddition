@@ -164,6 +164,7 @@
 
 
 import { defineConfig } from "tinacms";
+import schema from "./schema";
 
 // Возникают проблемы с действиями ключей. Ошибка ли это с 
 // ключами, или конфиг плохо читается.
@@ -184,30 +185,6 @@ export default defineConfig({
       publicFolder: "../quartz/public", // Путь к публичной папке Quartz
     },
   },
-//Все же проблема с ключами
-  schema: {
-    collections: [
-      {
-        name: "notes",
-        label: "Заметки",
-        path: "../quartz/content/notes", // Путь к файлам коллекции заметок
-        format: "md",
-        fields: [
-          {
-            type: "string",
-            name: "title",
-            label: "Заголовок",
-            isTitle: true,
-            required: true,
-          },
-          {
-            type: "rich-text",
-            name: "body",
-            label: "Содержание",
-            isBody: true,
-          },
-        ],
-      },
-    ],
-  },
+
+  schema: schema,
 });
