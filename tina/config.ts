@@ -102,7 +102,8 @@
 // });
 import { defineConfig } from "tinacms";
 // import { collections } from "./schemas";
-import { schema } from "./collections/schema";
+import schema from "./collections/schema"; // без фигурных скобок, 
+// так как импорт именнованный
 // import { Page } from "./collections/page";
 // import { Library } from "./collections/library";
 
