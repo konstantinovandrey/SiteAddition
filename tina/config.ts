@@ -184,7 +184,7 @@ export default defineConfig({
       publicFolder: "../quartz/public", // Путь к публичной папке Quartz
     },
   },
-
+//Все же проблема с ключами
   schema: {
     collections: [
       {
