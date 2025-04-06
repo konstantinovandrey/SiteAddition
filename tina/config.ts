@@ -102,6 +102,8 @@
 // });
 import { defineConfig } from "tinacms";
 
+// Возникают проблемы с действиями ключей. Ошибка ли это с 
+// ключами, или конфиг плохо читается.
 export default defineConfig({
   branch: "v4", // Используйте вашу основную ветку
   token: process.env.TINA_TOKEN, // Значение должно совпадать с .env
