@@ -9,22 +9,24 @@ const schema = {
                 {
                     name: 'title',
                     label: 'Title',
+                    type: 'string',
                     isTitle: true,
-                    type: 'string', // Указан тип
+                    required: true, // Добавлено required для поля isTitle
                 },
                 {
                     name: 'description',
                     label: 'Description',
-                    type: 'string', // Указан тип
+                    type: 'string',
                 },
                 {
                     name: 'exerciseType',
                     label: 'ExerciseType',
+                    type: 'object', // Добавлен тип object для вложенных полей
                     fields: [
                         {
                             name: 'exercises',
                             label: 'Exercises',
-                            type: 'text', // Указан тип
+                            type: 'string',
                             ui: {
                                 component: 'textarea',
                             },
@@ -42,7 +44,7 @@ const schema = {
             fields: [
                 { name: "title", label: "Название сайта", type: "string" },
                 { name: "description", label: "Описание", type: "string" },
-                { name: "logo", label: "Логотип", type: "image" },
+                { name: "logo", label: "Логотип", type: "image" }
             ]
         },
         {
@@ -51,7 +53,7 @@ const schema = {
             path: "content/settings/menu.json",
             fields: [
                 { name: "menuTitle", label: "Название меню", type: "string" },
-                { name: "menuItems", label: "Элементы меню", type: "list" }
+                { name: "menuItems", label: "Элементы меню", type: "string" }
             ]
         }
     ],
@@ -69,6 +71,7 @@ const schema = {
 };
 
 export default schema;
+
 
 // const schema = {
 //     collections: [
