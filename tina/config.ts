@@ -172,7 +172,7 @@ export default defineConfig({
   branch: "v4", // Используйте вашу основную ветку
   token: process.env.TINA_TOKEN, // Значение должно совпадать с .env
   clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID, // Значение должно совпадать с .env
- 
+ // Попробовал удалить schema в папке generated
 
   build: {
     outputFolder: "admin", // Папка для админ-панели
