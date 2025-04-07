@@ -170,10 +170,9 @@ import { defineConfig } from "tinacms";
 // ключами, или конфиг плохо читается.
 export default defineConfig({
   branch: "v4", // Используйте вашу основную ветку
-  // token: process.env.TINA_TOKEN, // Значение должно совпадать с .env
-  // clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID, // Значение должно совпадать с .env
-  token: "e5cfff5f-86f6-45d7-ac19-898fa53fa572", // Ваш токен
-  clientId: "dd4737429ac8d18ce1c98530d05fa3bebf718e39", // Ваш Client ID
+  token: process.env.TINA_TOKEN, // Значение должно совпадать с .env
+  clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID, // Значение должно совпадать с .env
+ 
 
   build: {
     outputFolder: "admin", // Папка для админ-панели
