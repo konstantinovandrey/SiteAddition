@@ -186,5 +186,29 @@ export default defineConfig({
     },
   },
 
-  schema,
+  schema: defineSchema({
+    collections: [
+      {
+        name: "notes",
+        label: "Заметки",
+        path: "content/notes",
+        format: "md",
+        fields: [
+          {
+            type: "string",
+            name: "title",
+            label: "Заголовок",
+            isTitle: true,
+            required: true,
+          },
+          {
+            type: "rich-text",
+            name: "body",
+            label: "Содержание",
+            isBody: true,
+          },
+        ],
+      },
+    ],
+  }),
 });
