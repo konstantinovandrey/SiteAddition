@@ -182,7 +182,7 @@ export default defineConfig({
   media: {
     tina: {
       mediaRoot: "images", // Папка, где хранятся медиафайлы
-      publicFolder: "../quartz/public", // Путь к публичной папке Quartz
+      publicFolder: "public", // Путь к публичной папке Quartz
     },
   },
 
