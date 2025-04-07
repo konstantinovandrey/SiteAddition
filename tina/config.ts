@@ -186,7 +186,7 @@ export default defineConfig({
     },
   },
 
-  schema: defineSchema({
+  schema: {
     collections: [
       {
         name: "notes",
@@ -210,5 +210,5 @@ export default defineConfig({
         ],
       },
     ],
-  }),
+  },
 });
