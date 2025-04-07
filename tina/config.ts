@@ -186,5 +186,5 @@ export default defineConfig({
     },
   },
 
-  schema: schema,
+  schema,
 });
