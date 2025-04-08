@@ -190,26 +190,23 @@ export default defineConfig({
   schema: {
     collections: [
       {
-        name: "notes",
-        label: "Заметки",
-        path: "content/notes",
-        format: "md",
+        name: "my_first_collection",
+        label: "My first collection",
+        path: "content/first",
         fields: [
           {
             type: "string",
             name: "title",
-            label: "Заголовок",
+            label: "Title",
             isTitle: true,
             required: true,
-          },
-          {
-            type: "rich-text",
-            name: "body",
-            label: "Содержание",
-            isBody: true,
-          },
+          }
         ],
-      },
+        ui: {
+          // This is a DEMO router. You can remove this to fit your site
+          router: ({ document }) => `/demo/blog/${document._sys.filename}`,
+        },
+      }
     ],
   },
 });
