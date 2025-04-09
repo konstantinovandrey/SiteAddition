@@ -18,7 +18,7 @@ const schema = defineSchema({
         // This is a DEMO router. You can remove this to fit your site
         router: ({ document }) => `/demo/blog/${document._sys.filename}`,
       },
-    }
+    },
     {
       name: "image and text",
       label: "Заметки",
