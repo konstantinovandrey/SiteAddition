@@ -15,8 +15,10 @@ const schema = defineSchema({
         }
       ],
       ui: {
-        // This is a DEMO router. You can remove this to fit your site
-        router: ({ document }) => `/demo/blog/${document._sys.filename}`,
+        router: ({ document }) => {
+          if (document._sys.filename == "Hello-World") {
+              return "/";
+          }
       },
     },
     {
