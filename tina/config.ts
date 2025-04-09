@@ -202,10 +202,10 @@ export default defineConfig({
             required: true,
           }
         ],
-        ui: {
-          // This is a DEMO router. You can remove this to fit your site
-          router: ({ document }) => `/demo/blog/${document._sys.filename}`,
-        },
+        // ui: {
+        //   // This is a DEMO router. You can remove this to fit your site
+        //   router: ({ document }) => `/demo/blog/${document._sys.filename}`,
+        // },
       }
     ],
   },

@@ -2,7 +2,7 @@ name: Deploy Main Site with Quartz
 on:
   push:
     branches:
-      - v4  # Assuming your main branch is "main"
+      - v4  
 
   workflow_dispatch:
 
@@ -61,7 +61,13 @@ jobs:
       - name: Disable Jekyll processing
         run: |
           touch ./.nojekyll
-       
+
+
+      - name: Display File Structure
+        run: |
+          echo "Project File Structure:"
+          tree -L 5 
+
    #------------------------------------------------------#
    # такие проблемы тут наворотил, жесть просто.#
      
