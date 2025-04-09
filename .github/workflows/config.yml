@@ -50,8 +50,8 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y libvips-dev
 
     
-      - name: Install Firebase #Authentication for website
-        run: npm install firebase
+      # - name: Install Firebase #Authentication for website
+      #   run: npm install firebase
       # Build Quartz
       # - name: Install Quartz Dependencies # Очень избыточная хрень
       #   working-directory: ./quartz

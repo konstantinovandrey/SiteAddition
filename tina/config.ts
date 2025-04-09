@@ -164,7 +164,7 @@
 
 
 import { defineConfig } from "tinacms";
-// import schema from "./schema";
+import schema from "./content_settings/schema";
 
 // Возникают проблемы с действиями ключей. Ошибка ли это с 
 // ключами, или конфиг плохо читается.
@@ -177,7 +177,7 @@ export default defineConfig({
   build: {
     outputFolder: "admin", // Папка для админ-панели
     publicFolder: "", // Путь к публичной папке Quartz
-    basePath: "webapp", // Префикс для всех путей
+    basePath: "webapp/", // Префикс для всех путей
   },
 
   media: {
@@ -187,26 +187,5 @@ export default defineConfig({
     },
   },
 
-  schema: {
-    collections: [
-      {
-        name: "my_first_collection",
-        label: "My first collection",
-        path: "content/first",
-        fields: [
-          {
-            type: "string",
-            name: "title",
-            label: "Title",
-            isTitle: true,
-            required: true,
-          }
-        ],
-        // ui: {
-        //   // This is a DEMO router. You can remove this to fit your site
-        //   router: ({ document }) => `/demo/blog/${document._sys.filename}`,
-        // },
-      }
-    ],
-  },
+  schema,
 });
