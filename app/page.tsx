@@ -1,37 +1,29 @@
-// export default function Home() {
-//     return (
-//       <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-//         <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-//         Hello World!
-//         </main>
-//       </div>
-//     );
-//   }
+"use client";
+// needed because NextJS is SSR by default, and we want to do client-side rendering for now.
+import { useState, useEffect } from "react";
+import { client } from "../tina/__generated__/client";
+// this will be used to query our Tina CMS to get our awesome title
+// you may need to update the relative import depending on your setup
 
-// ...
-import { useTina } from 'tinacms/dist/react';
 
-export default function Home(props) {
-  // Pass our data through the "useTina" hook to make it editable
-  const { data } = useTina({
-    query: props.query,
-    variables: props.variables,
-    data: props.data,
-  });
+export default function Home() {
+  const [amazingTitle, setAmazingTitle] = useState("");
 
-  // Note how our page title uses "data", and not the original "props.data".
-  // This ensures that the content will be updated in edit-mode as the user types
-  return <h1>{data.page.title}</h1>;
+  useEffect(() => {
+    const fetchContent = async () => {
+      const result = await client.queries.my_first_collection({
+        relativePath: "Hello-World.md",
+      });
+      setAmazingTitle(result.data.my_first_collection.title);
+    };
+
+    fetchContent();
+  }, []);
+return (
+    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+        <h1>Hello World!</h1>
+      </main>
+    </div>
+  );
 }
-
-export const getStaticProps = async () => {
-  const pageResponse = await client.queries.page({ relativePath: 'home.mdx' });
-
-  return {
-    props: {
-      data: pageResponse.data,
-      query: pageResponse.query,
-      variables: pageResponse.variables,
-    },
-  };
-};
