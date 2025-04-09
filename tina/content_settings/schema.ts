@@ -23,7 +23,7 @@ const schema = defineSchema({
       }, 
     },
     {
-      name: "image and text",
+      name: "image_text",
       label: "Заметки",
       path: "content/notes",
       // Формат файлов в этой коллекции
