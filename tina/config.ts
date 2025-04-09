@@ -176,7 +176,7 @@ export default defineConfig({
 
   build: {
     outputFolder: "admin", // Папка для админ-панели
-    publicFolder: "/", // Путь к публичной папке Quartz
+    publicFolder: "public", // Путь к публичной папке Quartz
     basePath: "/webapp", // Префикс для всех путей
   },
 
@@ -202,10 +202,10 @@ export default defineConfig({
             required: true,
           }
         ],
-        ui: {
-          // This is a DEMO router. You can remove this to fit your site
-          router: ({ document }) => `/demo/blog/${document._sys.filename}`,
-        },
+        // ui: {
+        //   // This is a DEMO router. You can remove this to fit your site
+        //   router: ({ document }) => `/demo/blog/${document._sys.filename}`,
+        // },
       }
     ],
   },
