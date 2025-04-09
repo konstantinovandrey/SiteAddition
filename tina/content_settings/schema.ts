@@ -20,6 +20,7 @@ const schema = defineSchema({
               return "/";
           }
       },
+      }, 
     },
     {
       name: "image and text",
